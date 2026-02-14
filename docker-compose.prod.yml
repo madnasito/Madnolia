@@ -6,10 +6,8 @@ services:
       target: production
     ports:
       - "3000:3000"
-    volumes:
-      - ./Madnolia-Backend:/app:Z
-      - /app/node_modules
     environment:
+
       - NODE_ENV=production
     restart: always
     # No volumes for source code in production to keep it immutable
