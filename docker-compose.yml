@@ -1,8 +1,10 @@
 services:
   backend:
+    image: madnolia-backend-dev
     build:
       context: ./Madnolia-Backend
       target: development
+
     ports:
       - 3000:3000
     volumes:

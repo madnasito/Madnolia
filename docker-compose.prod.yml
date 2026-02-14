@@ -1,15 +1,19 @@
 services:
   backend:
+    image: madnolia-backend-prod
     build:
       context: ./Madnolia-Backend
       dockerfile: Dockerfile
       target: production
+
     ports:
       - "3000:3000"
     env_file:
       - ./Madnolia-Backend/.env.production
     environment:
       - NODE_ENV=production
+      - MONGODB_REPLICA_SET=
+
 
     restart: always
     # No volumes for source code in production to keep it immutable
