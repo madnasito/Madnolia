@@ -1,7 +1,7 @@
 services:
   backend:
     build:
-      context: ./madnolia-backend
+      context: ./Madnolia-Backend
       dockerfile: Dockerfile
       target: production
     ports:
