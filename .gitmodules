@@ -1,0 +1,9 @@
+[submodule "Madnolia-Backend"]
+	path = Madnolia-Backend
+	url = https://github.com/madnasito/Madnolia-Backend.git
+[submodule "Madnolia-Mobile"]
+	path = Madnolia-Mobile
+	url = https://github.com/madnasito/Madnolia-Mobile.git
+[submodule "Madnolia-Web-Frontend"]
+	path = Madnolia-Web-Frontend
+	url = https://github.com/madnasito/Madnolia-Web-Frontend.git
