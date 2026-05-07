@@ -24,6 +24,8 @@ services:
     ports:
       - 27017:27017
     command: mongod --replSet rs1 --bind_ip_all
+    logging:
+      driver: none
 
 
 volumes:
