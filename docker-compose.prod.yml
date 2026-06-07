@@ -16,5 +16,8 @@ services:
 
 
     restart: always
-    # No volumes for source code in production to keep it immutable
-    # Only volumes for persistent data (like uploads) would go here
+    volumes:
+      - releases_data:/app/public/releases
+
+volumes:
+  releases_data:
