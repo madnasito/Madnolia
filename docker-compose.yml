@@ -13,7 +13,10 @@ services:
     environment:
       - NODE_ENV=development
     depends_on:
-      - mongo
+      mongo:
+        condition: service_healthy
+      mongo-init:
+        condition: service_completed_successfully
   
   mongo:
     image: mongo
@@ -24,8 +27,33 @@ services:
     ports:
       - 27017:27017
     command: mongod --replSet rs1 --bind_ip_all
+    healthcheck:
+      test: mongosh --eval 'db.runCommand("ping").ok' --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
     logging:
       driver: none
+
+  mongo-init:
+    image: mongo
+    depends_on:
+      mongo:
+        condition: service_healthy
+    command: >
+      mongosh --host mongo:27017 --eval '
+        try {
+          if (rs.status().ok) {
+            console.log("Replica set already initialized");
+          }
+        } catch (e) {
+          rs.initiate({
+            _id: "rs1",
+            members: [{ _id: 0, host: "mongo:27017" }]
+          });
+          console.log("Replica set initialized successfully");
+        }
+      '
 
 
 volumes:
