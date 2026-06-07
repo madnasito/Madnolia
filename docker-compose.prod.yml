@@ -17,8 +17,4 @@ services:
 
     restart: always
     volumes:
-      - ./Madnolia-Backend:/app:Z
-      - /app/node_modules
-
-volumes:
-  releases_data:
+      - ./Madnolia-Backend/public/releases:/app/public/releases
